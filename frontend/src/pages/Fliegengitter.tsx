@@ -21,7 +21,7 @@ export function Fliegengitter() {
                 <TextField type="text" label="Länge" onChange={setLengthAndConvertToNumber}/>
             </Stack.Item>
         </Stack>
-        <Stack horizontal>
+        <Stack>
             <Stack.Item>
                 <PrimaryButton text="Klick wen anders!" onClick={() => alert(length)}/>
             </Stack.Item>
