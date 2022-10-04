@@ -2,9 +2,16 @@ import {IStackTokens, Stack} from "@fluentui/react/lib/Stack";
 import {FormEvent, useState} from "react";
 import {TextField} from "@fluentui/react/lib/TextField";
 import {PrimaryButton} from "@fluentui/react/lib/Button";
-import {ChoiceGroup, IChoiceGroupOption, MessageBar} from "@fluentui/react";
+import {ChoiceGroup, IChoiceGroupOption, mergeStyles, mergeStyleSets, MessageBar} from "@fluentui/react";
 
 export function Insektenschutz() {
+
+    const style = mergeStyleSets({
+       inputField:{
+           backgroundColor: "lightgrey",
+
+       }
+    })
 
     const [length, setLength] = useState<number>();
     const [width, setWidth] = useState<number>();
@@ -43,7 +50,7 @@ export function Insektenschutz() {
         <MessageBar>
             Konfigurieren Sie Sich ihren individuellen Insektenschutz!!!
         </MessageBar>
-        <Stack tokens={stackToken}>
+        <Stack tokens={stackToken} className={style.inputField}>
             <Stack.Item align="baseline">
                 <TextField name="length" type="number" step="any" label="Länge" onChange={setLengthAndConvertToNumber}
                            placeholder="cm" required/>

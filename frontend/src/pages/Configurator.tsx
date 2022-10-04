@@ -5,21 +5,17 @@ import {Rollladen} from "./Rollladen";
 import {Markisen} from "./Markisen";
 
 const style = mergeStyleSets({
-    root: {
-
-        alignItems: "center",
-        justifyContent: "space-around",
-
-    },
-    tabItem: {
-        justifyContent: "left",
-
-
+        root: {
+            alignItems: "center",
+            justifyContent: "space-around",
+        },
+        tabItem: {
+            justifyContent: "left",
+        }
     }
+)
 
-})
-
-enum tabs{
+enum tabs {
     fliegengitter,
     rolllaeden,
     markisen
@@ -27,18 +23,21 @@ enum tabs{
 
 export function Configurator() {
 
-    const [tabSet,setTabSet] = useState<tabs>(tabs.fliegengitter)
+    const [tabSet, setTabSet] = useState<tabs>(tabs.fliegengitter)
 
-    return<>
+    return <>
+        <div>
             <Stack horizontal className={style.root}>
-                <Stack.Item className={style.tabItem} onClick={()=>setTabSet(tabs.fliegengitter)}>Fliegengitter</Stack.Item>
-                <Stack.Item className={style.tabItem} onClick={()=>setTabSet(tabs.rolllaeden)}>Rollladen</Stack.Item>
-                <Stack.Item className={style.tabItem} onClick={()=>setTabSet(tabs.markisen)}>Markisen</Stack.Item>
+                <Stack.Item className={style.tabItem}
+                            onClick={() => setTabSet(tabs.fliegengitter)}>Fliegengitter</Stack.Item>
+                <Stack.Item className={style.tabItem} onClick={() => setTabSet(tabs.rolllaeden)}>Rollladen</Stack.Item>
+                <Stack.Item className={style.tabItem} onClick={() => setTabSet(tabs.markisen)}>Markisen</Stack.Item>
             </Stack>
             <Stack>
-                {tabSet===tabs.fliegengitter && <Insektenschutz/>}
-                {tabSet===tabs.rolllaeden && <Rollladen/>}
-                {tabSet===tabs.markisen && <Markisen/>}
+                {tabSet === tabs.fliegengitter && <Insektenschutz/>}
+                {tabSet === tabs.rolllaeden && <Rollladen/>}
+                {tabSet === tabs.markisen && <Markisen/>}
             </Stack>
-        </>
+        </div>
+    </>
 }
