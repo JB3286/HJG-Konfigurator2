@@ -6,9 +6,12 @@ import {Stack} from '@fluentui/react';
 
 const style = {
     root:{
-        margin: "0 auto",
-        width: "800px",
+        margin: "20px auto",
+        width: "1000px",
     },
+    navBar:{
+        margin: "0px auto",
+    }
 
 }
 function App() {
