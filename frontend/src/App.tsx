@@ -18,6 +18,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout/>}>
+                    <Route index element={<Navigate to="/configurator/fliegengitter"/>}/>
                     <Route path="configurator">
                         <Route path=":product" element={<Configurator/>}/>
                         <Route index element={<Navigate to="/"/>}/>

@@ -1,4 +1,11 @@
-export type ConfigurationInputType = "INPUT_NUMBER" | "INPUT_STRING" | "DROPDOWN" | "IMAGE_SELECT"
+export type ConfigurationInputType = {
+    INPUT_NUMBER(ConfigurationPropertyView): JSX.Element
+    INPUT_STRING(ConfigurationPropertyView): JSX.Element
+    DROPDOWN(ConfigurationPropertyView): JSX.Element
+    IMAGE_SELECT(ConfigurationPropertyView): JSX.Element
+}
+
+export type ConfigurationProps = (ConfigurationPropertyView: ConfigurationPropertyView) => JSX.Element
 
 export interface ConfigurationValue {
     value: string
@@ -7,9 +14,13 @@ export interface ConfigurationValue {
 
 export interface ConfigurationProperty {
     name: string
-    inputType: ConfigurationInputType
+    inputType: keyof ConfigurationInputType
     values: ConfigurationValue[]
-    unit: string | undefined
+    unit: string | undefined,
+}
+
+export interface ConfigurationPropertyView extends ConfigurationProperty {
+    onClick(value: string): void,
 }
 
 export interface ConfigurationRuleSet {

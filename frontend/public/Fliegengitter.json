@@ -21,6 +21,12 @@
         "unit": "cm"
       },
       {
+        "name": "material",
+        "inputType": "INPUT_TEXT",
+        "values":  [],
+        "unit": null
+      },
+      {
         "name": "motor",
         "inputType": "DROPDOWN",
         "values": [
@@ -71,7 +77,7 @@
     ]
   },
   {
-    "name": "Rollo",
+    "name": "Rollladen",
     "properties": [
       {
         "name": "width",
@@ -89,6 +95,90 @@
         "name": "depth",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "motor",
+        "inputType": "DROPDOWN",
+        "values": [
+          {
+            "value": "1",
+            "image": null
+          },
+          {
+            "value": "0",
+            "image": null
+          }
+        ],
+        "unit": null
+      }
+    ],
+    "rules": [
+      {
+        "name": "m2",
+        "set": [
+          {
+            "condition": null,
+            "rule": "({c.height}+{c.width})"
+          }
+        ]
+      },
+      {
+        "name": "Motor",
+        "set": [
+          {
+            "condition": "{c.motor=1}",
+            "rule": "1"
+          }
+        ]
+      },
+      {
+        "name": "Color",
+        "set": [
+          {
+            "condition": "{c.color}='yellow",
+            "rule": "({c.height}+{c.width})"
+          },
+          {
+            "condition": "{c.color}='brown",
+            "rule": "({c.height}+{c.width})"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Markisen",
+    "properties": [
+      {
+        "name": "width",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "height",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "fabric",
+        "inputType": "DROPDOWN",
+        "values":[
+          {
+            "value": "Blau",
+            "image": null
+          },
+          {
+            "value": "Rot",
+            "image": null
+          },
+          {
+            "value": "Gelb",
+            "image": null
+          }
+        ],
         "unit": "cm"
       },
       {

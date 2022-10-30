@@ -9,5 +9,6 @@ export function useConfiguration(product: string) {
             .then(({data}) => setConfiguration(data));
     }, []);
 
+
     return {configuration}
 }
