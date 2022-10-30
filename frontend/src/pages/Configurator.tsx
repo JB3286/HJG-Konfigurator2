@@ -1,8 +1,8 @@
-import {mergeStyles, mergeStyleSets, Stack} from "@fluentui/react";
-import {useState} from "react";
-import {Insektenschutz} from "./Insektenschutz";
-import {Rollladen} from "./Rollladen";
-import {Markisen} from "./Markisen";
+import {mergeStyleSets, Stack} from "@fluentui/react";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router";
+import {useConfiguration} from "./useConfiguration";
+import {map, equals, find} from "ramda";
 
 const style = mergeStyleSets({
         root: {
@@ -10,34 +10,45 @@ const style = mergeStyleSets({
             justifyContent: "space-around",
         },
         tabItem: {
+            cursor: "pointer",
             justifyContent: "left",
         }
     }
 )
 
-enum tabs {
-    fliegengitter,
-    rolllaeden,
-    markisen
-}
 
 export function Configurator() {
+    const {product} = useParams<{ product: string }>();
+    const {configuration} = useConfiguration(product!);
+    const [tabSet, setTabSet] = useState<string>()
 
-    const [tabSet, setTabSet] = useState<tabs>(tabs.fliegengitter)
+    useEffect(() => {
+        if (configuration) {
+            setTabSet(configuration[0].name || "");
+        }
+    }, [configuration]);
 
-    return <>
-        <div>
-            <Stack horizontal className={style.root}>
-                <Stack.Item className={style.tabItem}
-                            onClick={() => setTabSet(tabs.fliegengitter)}>Fliegengitter</Stack.Item>
-                <Stack.Item className={style.tabItem} onClick={() => setTabSet(tabs.rolllaeden)}>Rollladen</Stack.Item>
-                <Stack.Item className={style.tabItem} onClick={() => setTabSet(tabs.markisen)}>Markisen</Stack.Item>
-            </Stack>
-            <Stack>
-                {tabSet === tabs.fliegengitter && <Insektenschutz/>}
-                {tabSet === tabs.rolllaeden && <Rollladen/>}
-                {tabSet === tabs.markisen && <Markisen/>}
-            </Stack>
-        </div>
-    </>
+    if (configuration) {
+        return <>
+            <div>
+                <Stack horizontal className={style.root}>
+                    {map(({name}) =>
+                            <Stack.Item
+                                key={name}
+                                style={{fontWeight: equals(name, tabSet) ? "bold": "normal"}}
+                                className={style.tabItem}
+                                onClick={() => setTabSet(name)}
+                            >
+                                {name}
+                            </Stack.Item>,
+                        configuration)}
+                </Stack>
+                <Stack>
+                    {find(conf => equals(conf.name, tabSet), configuration)?.name}
+                </Stack>
+            </div>
+        </>
+    }
+
+    return <>Loading...</>
 }

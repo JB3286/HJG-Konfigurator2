@@ -1,0 +1,144 @@
+[
+  {
+    "name": "Fliegengitter",
+    "properties": [
+      {
+        "name": "width",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "height",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "depth",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "motor",
+        "inputType": "DROPDOWN",
+        "values": [
+          {
+            "value": "1",
+            "image": null
+          },
+          {
+            "value": "0",
+            "image": null
+          }
+        ],
+        "unit": null
+      }
+    ],
+    "rules": [
+      {
+        "name": "m2",
+        "set": [
+          {
+            "condition": null,
+            "rule": "({height}+{width})"
+          }
+        ]
+      },
+      {
+        "name": "Motor",
+        "set": [
+          {
+            "condition": "{motor=1}",
+            "rule": "1"
+          }
+        ]
+      },
+      {
+        "name": "Color",
+        "set": [
+          {
+            "condition": "{c.color}='yellow",
+            "rule": "({height}+{width})"
+          },
+          {
+            "condition": "{c.color}='brown",
+            "rule": "({height}+{width})"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rollo",
+    "properties": [
+      {
+        "name": "width",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "height",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "depth",
+        "inputType": "INPUT_NUMBER",
+        "values": [],
+        "unit": "cm"
+      },
+      {
+        "name": "motor",
+        "inputType": "DROPDOWN",
+        "values": [
+          {
+            "value": "1",
+            "image": null
+          },
+          {
+            "value": "0",
+            "image": null
+          }
+        ],
+        "unit": null
+      }
+    ],
+    "rules": [
+      {
+        "name": "m2",
+        "set": [
+          {
+            "condition": null,
+            "rule": "({c.height}+{c.width})"
+          }
+        ]
+      },
+      {
+        "name": "Motor",
+        "set": [
+          {
+            "condition": "{c.motor=1}",
+            "rule": "1"
+          }
+        ]
+      },
+      {
+        "name": "Color",
+        "set": [
+          {
+            "condition": "{c.color}='yellow",
+            "rule": "({c.height}+{c.width})"
+          },
+          {
+            "condition": "{c.color}='brown",
+            "rule": "({c.height}+{c.width})"
+          }
+        ]
+      }
+    ]
+  }
+]

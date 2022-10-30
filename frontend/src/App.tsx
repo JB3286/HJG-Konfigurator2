@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import {Configurator} from "./pages/Configurator";
 import {Stack} from '@fluentui/react';
+import {Layout} from "./layout/Layout";
 
 const style = {
     root: {
@@ -15,11 +16,14 @@ function App() {
 
     return <Stack styles={style}>
         <BrowserRouter>
-            <Switch>
-                <Route path={"/"} exact={true}>
-                    <Configurator/>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route path="configurator">
+                        <Route path=":product" element={<Configurator/>}/>
+                        <Route index element={<Navigate to="/"/>}/>
+                    </Route>
                 </Route>
-            </Switch>
+            </Routes>
         </BrowserRouter>
     </Stack>
 }
