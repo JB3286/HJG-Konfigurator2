@@ -13,14 +13,16 @@ export interface ConfigurationValue {
 }
 
 export interface ConfigurationProperty {
+    id: string,
     name: string
     inputType: keyof ConfigurationInputType
     values: ConfigurationValue[]
+    currentValue: string | undefined,
     unit: string | undefined,
 }
 
 export interface ConfigurationPropertyView extends ConfigurationProperty {
-    onClick(value: string): void,
+    onClick(id: string, value: string): void,
 }
 
 export interface ConfigurationRuleSet {

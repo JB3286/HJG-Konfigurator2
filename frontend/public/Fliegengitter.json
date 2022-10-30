@@ -3,30 +3,39 @@
     "name": "Fliegengitter",
     "properties": [
       {
+        "id": "00001",
         "name": "width",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": "12",
         "unit": "cm"
       },
       {
+        "id": "00002",
         "name": "height",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00003",
         "name": "depth",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00004",
         "name": "material",
-        "inputType": "INPUT_TEXT",
+        "inputType": "INPUT_STRING",
         "values":  [],
+        "currentValue": null,
         "unit": null
       },
       {
+        "id": "00005",
         "name": "motor",
         "inputType": "DROPDOWN",
         "values": [
@@ -39,6 +48,7 @@
             "image": null
           }
         ],
+        "currentValue": null,
         "unit": null
       }
     ],
@@ -80,24 +90,31 @@
     "name": "Rollladen",
     "properties": [
       {
+        "id": "00006",
         "name": "width",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00007",
         "name": "height",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00008",
         "name": "depth",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00009",
         "name": "motor",
         "inputType": "DROPDOWN",
         "values": [
@@ -110,6 +127,7 @@
             "image": null
           }
         ],
+        "currentValue": null,
         "unit": null
       }
     ],
@@ -151,18 +169,23 @@
     "name": "Markisen",
     "properties": [
       {
+        "id": "00010",
         "name": "width",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00011",
         "name": "height",
         "inputType": "INPUT_NUMBER",
         "values": [],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00012",
         "name": "fabric",
         "inputType": "DROPDOWN",
         "values":[
@@ -179,9 +202,11 @@
             "image": null
           }
         ],
+        "currentValue": null,
         "unit": "cm"
       },
       {
+        "id": "00013",
         "name": "motor",
         "inputType": "DROPDOWN",
         "values": [
@@ -194,6 +219,7 @@
             "image": null
           }
         ],
+        "currentValue": null,
         "unit": null
       }
     ],

@@ -1,8 +1,7 @@
 import {mergeStyleSets, Stack} from "@fluentui/react";
-import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {useConfiguration} from "./useConfiguration";
-import {equals, find, map} from "ramda";
+import {equals, map} from "ramda";
 import {Configuration, ConfigurationInputType, ConfigurationProps} from "../types/configuration";
 import {Input} from "../components/Input";
 import {Dropdown} from "../components/Dropdown";
@@ -27,12 +26,15 @@ export const CONFIGURATOR_SETTINGS: ConfigurationInputType = {
     IMAGE_SELECT: ImageSelect,
 }
 
-export function ConfigurationField({configuration}: { configuration: Configuration | undefined }) {
+export function ConfigurationField({
+                                       configuration,
+                                       onClick
+                                   }: { configuration: Configuration | undefined, onClick: (id: string, value: string) => void }) {
     if (configuration) {
         return <>
             {map((properties) => {
                 const Component: ConfigurationProps = CONFIGURATOR_SETTINGS[properties.inputType];
-                return <Component {...{...properties, onClick: (value: string) => console.log(value)}} />
+                return <Component {...{...properties, onClick, key: properties.id}} />
             }, configuration.properties)}
         </>
     }
@@ -41,16 +43,9 @@ export function ConfigurationField({configuration}: { configuration: Configurati
 
 export function Configurator() {
     const {product} = useParams<{ product: string }>();
-    const {configuration} = useConfiguration(product!);
-    const [tabSet, setTabSet] = useState<string>()
+    const {configuration, tabSet, setTabSet, currentConfiguration, onValue} = useConfiguration(product!);
 
-    useEffect(() => {
-        if (configuration) {
-            setTabSet(configuration[0].name || "");
-        }
-    }, [configuration]);
-    console.log(configuration)
-    if (configuration) {
+    if (configuration && currentConfiguration) {
         return <>
             <div>
                 <Stack horizontal className={style.root}>
@@ -66,7 +61,7 @@ export function Configurator() {
                         configuration)}
                 </Stack>
                 <Stack>
-                    <ConfigurationField configuration={find(conf => equals(conf.name, tabSet), configuration)}/>
+                    <ConfigurationField configuration={currentConfiguration} onClick={onValue}/>
                 </Stack>
             </div>
         </>
