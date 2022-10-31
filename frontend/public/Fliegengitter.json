@@ -67,7 +67,7 @@
         "set": [
           {
             "condition": "{motor=1}",
-            "rule": "1"
+            "rule": "{motor}"
           }
         ]
       },
@@ -75,11 +75,7 @@
         "name": "Color",
         "set": [
           {
-            "condition": "{c.color}='yellow",
-            "rule": "({height}+{width})"
-          },
-          {
-            "condition": "{c.color}='brown",
+            "condition": "{color}=='yellow' || {color}=='brown'",
             "rule": "({height}+{width})"
           }
         ]

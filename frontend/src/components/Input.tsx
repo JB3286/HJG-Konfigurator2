@@ -9,7 +9,7 @@ export function Input({id, name, currentValue, onClick, unit, inputType}: Config
             type={inputType === "INPUT_NUMBER" ? "NUMBER" : "TEXT"}
             step="any"
             label={name}
-            onBlur={event => onClick(id, event.currentTarget.value)}
+            onChange={event => onClick(id, event.currentTarget.value)}
             placeholder={unit ? unit : ""}
             value={currentValue}
             required

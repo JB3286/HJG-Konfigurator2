@@ -43,8 +43,8 @@ export function ConfigurationField({
 
 export function Configurator() {
     const {product} = useParams<{ product: string }>();
-    const {configuration, tabSet, setTabSet, currentConfiguration, onValue} = useConfiguration(product!);
-
+    const {configuration, tabSet, setTabSet, currentConfiguration, onValue, evaluatedRules} = useConfiguration(product!);
+    console.log(evaluatedRules);
     if (configuration && currentConfiguration) {
         return <>
             <div>

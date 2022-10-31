@@ -10,7 +10,7 @@ export function Dropdown({id, name, currentValue, values, onClick}: Configuratio
         <FluentDropdown
             placeholder="Select an option"
             label={name}
-            defaultValue={currentValue}
+            defaultSelectedKey={currentValue}
             options={options}
             onChange={(e, item) => onClick(id, item?.text || "")}
         />
